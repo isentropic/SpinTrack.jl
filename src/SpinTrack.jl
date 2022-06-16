@@ -50,6 +50,7 @@ include("bmt_equation.jl")
 include("solutions.jl")
 include("analysis/analysis.jl")
 include("analysis/plottings.jl")
+include("utils.jl")
 
 export get_solution, get_moving_average, get_simple_linear_rate
 
