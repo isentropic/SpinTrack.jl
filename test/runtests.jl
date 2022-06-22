@@ -7,8 +7,7 @@ using BenchmarkTools
 end
 
 @testset "Performance" begin
-    let p = symmetric_hybrid_ring();
-        @benchmark get_solution(u0_long, p)
-        @test (1.0 > @elapsed get_solution(u0_long, p))
-    end
+    @benchmark get_solution(u0_long, symmetric_hybrid_ring())
+
+    @test (1.0 > @elapsed get_solution(u0_long, symmetric_hybrid_ring()))
 end
