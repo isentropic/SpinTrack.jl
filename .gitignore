@@ -1,1 +1,4 @@
 /Manifest.toml
+untracked/
+untracked/**
+**/.ipynb_checkpoints/**

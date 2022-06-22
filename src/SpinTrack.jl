@@ -1,5 +1,6 @@
 module SpinTrack
 
+import Base.Threads
 using DiffEqCallbacks
 using DSP
 using FFTW
@@ -11,10 +12,10 @@ using OrdinaryDiffEq
 using Parameters
 using RecipesBase
 using Reexport
-using StaticArrays
 using Statistics
 
 @reexport using LaTeXStrings
+@reexport using StaticArrays
 
 const M = Measurements
 const time_index = 5

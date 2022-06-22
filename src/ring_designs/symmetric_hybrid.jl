@@ -31,21 +31,15 @@ function get_symmetric_hybrid_FODO(R0=95.49, n_fodo=24)
     return elements
 end
 
-function symmetric_hybrid_ring()
-    G_p = 1.792847
-
-    proton = Particle(name = "proton+",
-                      m = 1.672621898e-27,
-                      G = G_p,
-                      gamma = sqrt(1 + 1/G_p))
-
-    # ring_elements = tuple(vcat([get_symmetric_hybrid_FODO() for i in 1:24]...)...)
-    ring_elements = vcat([get_symmetric_hybrid_FODO() for i in 1:24]...)
+function symmetric_hybrid_ring(
+    ring_elements = vcat([get_symmetric_hybrid_FODO() for i in 1:24]...),
+    particle = Proton() 
+    )
 
     ring = RingStructure(ring_elements)
 
 
-    p = RingParameters{Float64, eltype(ring.ringElements)}(ring=ring, particle=proton, internal_max_time_step = 1)
+    p = RingParameters{Float64, eltype(ring.ringElements)}(ring=ring, particle=particle, internal_max_time_step = 1)
     return p
 end
 export symmetric_hybrid_ring
@@ -85,19 +79,13 @@ function get_symmetric_magnetic_FODO(R0=95.49, n_fodo=24)
     return elements
 end
 
-function symmetric_magnetic_ring()
-    G_p = 1.792847
-
-    proton = Particle(name = "proton+",
-                      m = 1.672621898e-27,
-                      G = G_p,
-                      gamma = sqrt(1 + 1/G_p))
-
-    # ring_elements = tuple(vcat([get_symmetric_hybrid_FODO() for i in 1:24]...)...)
-    ring_elements = vcat([get_symmetric_magnetic_FODO() for i in 1:24]...)
+function symmetric_magnetic_ring(
+    ring_elements = vcat([get_symmetric_magnetic_FODO() for i in 1:24]...),
+    particle = Proton() 
+    )
 
     ring = RingStructure(ring_elements)
-    p = RingParameters{Float64, eltype(ring.ringElements)}(ring=ring, particle=proton, internal_max_time_step = 1)
+    p = RingParameters{Float64, eltype(ring.ringElements)}(ring=ring, particle=particle, internal_max_time_step = 1)
     return p
 end
 export symmetric_magnetic_ring

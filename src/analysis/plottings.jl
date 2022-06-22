@@ -83,16 +83,16 @@ end
     if cw == false
         for bin_index in 1:bins
             average_positions_per_bin[bin_index] = mean([sol(detector_bins[bin_index] + p.ring.total_length * (turn - 1))[3]
-                    for turn in 1:p.noOfpredictedTurns])
+                    for turn in 1:p.turns])
             std_per_bin[bin_index] = std([sol(detector_bins[bin_index] + p.ring.total_length * (turn - 1))[3]
-                    for turn in 1:p.noOfpredictedTurns])
+                    for turn in 1:p.turns])
         end
     else
         for bin_index in 1:bins
             average_positions_per_bin[bin_index] = mean([sol(-detector_bins[bin_index] + p.ring.total_length * (turn))[3]
-                    for turn in 1:p.noOfpredictedTurns])
+                    for turn in 1:p.turns])
             std_per_bin[bin_index] = std([sol(-detector_bins[bin_index] + p.ring.total_length * (turn))[3]
-                    for turn in 1:p.noOfpredictedTurns])
+                    for turn in 1:p.turns])
         end
     end
 
@@ -122,16 +122,16 @@ end
     if cw == false
         for bin_index in 1:bins
             average_positions_per_bin[bin_index] = mean([sol(detector_bins[bin_index] + p.ring.total_length * (turn - 1))[1]
-                    for turn in 1:p.noOfpredictedTurns])
+                    for turn in 1:p.turns])
             std_per_bin[bin_index] = std([sol(detector_bins[bin_index] + p.ring.total_length * (turn - 1))[1]
-                    for turn in 1:p.noOfpredictedTurns])
+                    for turn in 1:p.turns])
         end
     else
         for bin_index in 1:bins
             average_positions_per_bin[bin_index] = mean([sol(-detector_bins[bin_index] + p.ring.total_length * (turn))[1]
-                    for turn in 1:p.noOfpredictedTurns])
+                    for turn in 1:p.turns])
             std_per_bin[bin_index] = std([sol(-detector_bins[bin_index] + p.ring.total_length * (turn))[1]
-                    for turn in 1:p.noOfpredictedTurns])
+                    for turn in 1:p.turns])
         end
     end
     label :=  cw ? "CW" : "CCW"

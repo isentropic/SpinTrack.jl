@@ -8,25 +8,33 @@ function getFields(u, p, t, element::Drift)::Tuple{StaticArrays.SVector{3, Float
     zeros(SVector{3}), zeros(SVector{3}), 0.0
 end
 
-mutable struct ElectricBendingSection <: RingElement
+getCurvature(ringElement::Drift)::Float64 = 0.0
+
+@with_kw mutable struct ElectricBendingSection <: RingElement @deftype Float64
     R0::Float64
     Ex::Float64
     length::Float64
     curvature::Bool
     particle::Particle
 
-    n::Float64
+    n = 1.0
 
-    is_Ey_compensated::Bool
-    Ey::Float64
+    is_Ey_compensated::Bool = false
+    Ey = 0.0
+
+    Δx = 0.0
+    Δy = 0.0
 end
 
 getCurvature(ringElement::ElectricBendingSection)::Float64 = 1/ringElement.R0
 
-ElectricBendingSection(R0, Ex, length, curvature, particle) = ElectricBendingSection(R0, Ex, length, curvature, particle, 1.0, false, 0.0)
+ElectricBendingSection(R0, Ex, length, curvature, particle) = ElectricBendingSection(R0=R0, Ex=Ex, length=length, curvature=curvature, particle=particle)
 
 function getFields(u, p, t, element::ElectricBendingSection)::Tuple{StaticArrays.SVector{3, Float64}, StaticArrays.SVector{3, Float64}, Float64}
     x, y = u[1], u[3]
+
+    x -= element.Δx
+    y -= element.Δy
 
     E0 = element.Ex
     R0 = element.R0
