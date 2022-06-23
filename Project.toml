@@ -1,7 +1,7 @@
 name = "SpinTrack"
 uuid = "f20f1cdb-64eb-4dd1-8e50-747921795544"
 authors = ["Zhanibek Omarov"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 DSP = "717857b8-e6f2-59f4-9121-6e50c889abd2"
