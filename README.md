@@ -5,7 +5,8 @@ experiment.
 This software is developed by Zhanibek Omarov under supervision from Yannis K.
 Semertzidis and Selcuk Haciomeroglu during Ph.D. program at KAIST and IBS-CAPP. 
 Please provide the appropriate attribution if used in your works.
-Bibtex:
+
+1. Bibtex:
 ``` bibtex
 @software{Omarov_SpinTrack_jl_2022,
 author = {Omarov, Zhanibek},
@@ -15,6 +16,7 @@ version = {0.0.1},
 year = {2022}
 }
 ```
+2. Or use the github sidebar "citation" interface
 
 ## Installation instructions
 Install Julia - [link](https://julialang.org/downloads/platform/)
