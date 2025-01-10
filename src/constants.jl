@@ -12,7 +12,8 @@ struct RingStructure{ElementType}
     end
 end
 
-@with_kw mutable struct RingParameters{R<:Real, ElementType <: RingElement} @deftype R
+@with_kw mutable struct RingParameters{R<:Real,ElementType<:RingElement}
+    @deftype R
 
     particle::Particle = Particle()
     ring::RingStructure{ElementType} = getRingStructure()
@@ -22,14 +23,14 @@ end
     element_index::Int = 1
     verbose::Bool = false
 
-    alg::OrdinaryDiffEqAlgorithm = Tsit5()
+    alg::Any = Tsit5()
 
     save_positions::Bool = false
 
     starting_time = 0.0
     turns = 500.0
 
-    saving_time_step = ring.total_length/10
+    saving_time_step = ring.total_length / 10
     internal_max_time_step = ring.ringElements[element_index].length
 
     state_tolerance_rel::Union{Float64,Vector{Float64}} = 1e-12
@@ -43,7 +44,7 @@ end
     # RF
     RF_on::Bool = false
     RF_phase = 0.0
-    cyclotron_freq = 1/(ring.total_length/particle.beta/c)
+    cyclotron_freq = 1 / (ring.total_length / particle.beta / c)
     RF_omega = 2pi * cyclotron_freq * 80   # 30 times faster than
     RF_voltage = 1.89e3
 
@@ -67,5 +68,5 @@ end
     B_y = 1e-12
 end
 
-next_element_index(i, N) = (i) % (N)  + 1
-prev_element_index(i, N) = (i + (N-2)) % (N)  + 1
+next_element_index(i, N) = (i) % (N) + 1
+prev_element_index(i, N) = (i + (N - 2)) % (N) + 1
